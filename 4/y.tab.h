@@ -50,24 +50,14 @@ extern int yydebug;
   enum yytokentype
   {
     IF = 258,
-    LPAREN = 259,
-    RPAREN = 260,
-    LF = 261,
-    RF = 262,
-    EXP = 263,
-    SPACE = 264,
-    NUM = 265
+    EXP = 259,
+    NUM = 260
   };
 #endif
 /* Tokens.  */
 #define IF 258
-#define LPAREN 259
-#define RPAREN 260
-#define LF 261
-#define RF 262
-#define EXP 263
-#define SPACE 264
-#define NUM 265
+#define EXP 259
+#define NUM 260
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
