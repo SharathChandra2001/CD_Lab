@@ -68,8 +68,8 @@
 /* First part of user prologue.  */
 #line 1 "2.y"
 
-	#include<stdio.h>
-	#include<stdlib.h>		
+    #include<stdio.h>
+    #include<stdlib.h>
 
 #line 75 "y.tab.c"
 
@@ -471,7 +471,7 @@ static const yytype_int8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       8,     9,     7,     4,     2,     5,     2,     6,     2,     2,
+       8,     9,     6,     4,     2,     5,     2,     7,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -508,7 +508,7 @@ static const yytype_int8 yyrline[] =
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-  "$end", "error", "$undefined", "NUM", "'+'", "'-'", "'/'", "'*'", "'('",
+  "$end", "error", "$undefined", "NUM", "'+'", "'-'", "'*'", "'/'", "'('",
   "')'", "$accept", "S", "I", YY_NULLPTR
 };
 #endif
@@ -518,7 +518,7 @@ static const char *const yytname[] =
    (internal) symbol number NUM (which must be that of a token).  */
 static const yytype_int16 yytoknum[] =
 {
-       0,   256,   257,   258,    43,    45,    47,    42,    40,    41
+       0,   256,   257,   258,    43,    45,    42,    47,    40,    41
 };
 # endif
 
@@ -546,7 +546,7 @@ static const yytype_int8 yypact[] =
 static const yytype_int8 yydefact[] =
 {
        0,     8,     0,     0,     0,     2,     9,     0,     1,     0,
-       0,     0,     0,     7,     3,     4,     6,     5
+       0,     0,     0,     7,     3,     4,     5,     6
 };
 
   /* YYPGOTO[NTERM-NUM].  */
@@ -1292,49 +1292,49 @@ yyreduce:
     {
   case 2:
 #line 9 "2.y"
-    {printf("Result is %d\n",yyval);}
+    {printf("Result is %d",yyval);}
 #line 1297 "y.tab.c"
     break;
 
   case 3:
 #line 11 "2.y"
-                {yyval=yyvsp[-2]+yyvsp[0];}
+            {yyval=yyvsp[-2]+yyvsp[0];}
 #line 1303 "y.tab.c"
     break;
 
   case 4:
 #line 12 "2.y"
-                {yyval=yyvsp[-2]-yyvsp[0];}
+            {yyval=yyvsp[-2]-yyvsp[0];}
 #line 1309 "y.tab.c"
     break;
 
   case 5:
 #line 13 "2.y"
-                {yyval=yyvsp[-2]*yyvsp[0];}
+            {yyval=yyvsp[-2]*yyvsp[0];}
 #line 1315 "y.tab.c"
     break;
 
   case 6:
 #line 14 "2.y"
-                {if(yyvsp[0]==0){yyerror();}	else{yyval=yyvsp[-2]/yyvsp[0];}}
+            {if(yyvsp[0]==0){yyerror();}  else{yyval=yyvsp[-2]/yyvsp[0];}}
 #line 1321 "y.tab.c"
     break;
 
   case 7:
 #line 15 "2.y"
-                {yyval=yyvsp[-1];}
+            {yyval=yyvsp[-1];}
 #line 1327 "y.tab.c"
     break;
 
   case 8:
 #line 16 "2.y"
-                {yyval=yyvsp[0];}
+            {yyval=yyvsp[0];}
 #line 1333 "y.tab.c"
     break;
 
   case 9:
 #line 17 "2.y"
-                {yyval=-yyvsp[0];}
+            {yyval=-yyvsp[0];}
 #line 1339 "y.tab.c"
     break;
 
@@ -1575,13 +1575,13 @@ yyreturn:
 
 int main()
 {
-	printf("Enter operation:\n");
-	yyparse();
-	printf("Valid\n");
-	return 0;
+    printf("Enter operation: \n");
+    yyparse();
+    printf("\nValid\n");
+    return 0;
 }
 int yyerror()
 {
-	printf("Invalid\n");
-	exit(0);
+    printf("Invalid\n");
+    exit(0);
 }
