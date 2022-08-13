@@ -7,7 +7,7 @@
 [\t]    {spaces+=4;}
 [ ]     {spaces++;}
 [^\n\t #]+   {words++;chars+=yyleng;}
-[#]di       {return 0;}
+[#]       {return 0;}
 %%
 int main()
 {
