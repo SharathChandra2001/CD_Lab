@@ -1,8 +1,8 @@
 %{
     #include<stdio.h>
     #include<stdlib.h>
+    char addtotable(char,char,char);
     void quadruple();
-	char addToTable(char ,char, char); 
     int ind=0;
     char temp='A';
     struct incod
@@ -12,28 +12,28 @@
         char opr;
     }code[20];
 %}
-%union 
+%union
 {
     char sym;
 }
-%token <sym> NUM LET
-%type <sym> expr
-%left '-' '+'
-%right '*' '/'
+%token <sym> NUM EXP
+%type <sym> E
+%left '+' '-'
+%left '*' '/'
 %%
-S: LET '=' expr ';' {addToTable((char)$1,(char)$3,'=');}
-|  expr ';'
+S:EXP'='E';'    {addtotable((char)$1,(char)$3,'=');}
+|E';'
 ;
-expr: expr '+' expr {$$ = addToTable((char)$1,(char)$3,'+');}
-|   expr '-' expr {$$ = addToTable((char)$1,(char)$3,'-');}
-|   expr '*' expr {$$ = addToTable((char)$1,(char)$3,'*');}
-|   expr '/' expr {$$ = addToTable((char)$1,(char)$3,'/');}
-|   '(' expr ')'  {$$ = (char) $2;}
-|   NUM {$$ = (char) $1;}
-|   LET {$$ = (char) $1;}
+E:E'+'E     {$$=addtotable((char)$1,(char)$3,'+');}
+|E'-'E      {$$=addtotable((char)$1,(char)$3,'-');}
+|E'*'E      {$$=addtotable((char)$1,(char)$3,'*');}
+|E'/'E      {$$=addtotable((char)$1,(char)$3,'/');}
+|'('E')'    {$$=(char)$2;}
+|NUM        {$$=(char)$1;}
+|EXP        {$$=(char)$1;}
 ;
 %%
-char addToTable(char opd1, char opd2, char opr)
+char addtotable(char opd1,char opd2,char opr)
 {
     code[ind].opd1 = opd1;
     code[ind].opd2 = opd2;
@@ -44,24 +44,12 @@ char addToTable(char opd1, char opd2, char opr)
 }
 void quadruple()
 {
-    printf("\t\t\t Quadruple representation\n");
+    printf("\t\t\tQuadruple Representation\n");
+    printf("\n\tOPR\tOPD1\tOPD2\tRES\n");
     temp++;
     for(int i=0;i<ind;i++)
     {
-        printf("\t%c",code[i].opr);
-        if(isalnum(code[i].opd1))
-        {
-            printf("\t%c",code[i].opd1);
-        }
-        else
-            printf("\t%c",temp);
-        if(isalnum(code[i].opd2))
-        {
-            printf("\t%c",code[i].opd2);
-        }
-        else
-            printf("\t%c",temp);    
-        printf("\t%c\n",temp);
+        printf("\t%c\t%c\t%c\t%c\n",code[i].opr,code[i].opd1,code[i].opd2,temp);
         temp++;
     }
 }
@@ -69,11 +57,11 @@ int main()
 {
     printf("Enter the expression:\n");
     yyparse();
-    temp = 'A';
+    temp='A';
     quadruple();
 }
 int yyerror()
 {
-    printf("Invalid\n");
+    printf("Invalid expression\n");
     exit(0);
 }

@@ -362,7 +362,7 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[11] =
     {   0,
-        0,    0,    6,    4,    3,    1,    2,    1,    2,    0
+        2,    2,    6,    3,    4,    1,    2,    1,    2,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
@@ -728,18 +728,18 @@ YY_RULE_SETUP
 case 2:
 YY_RULE_SETUP
 #line 6 "6.l"
-{yylval.sym=(char)yytext[0];return LET;}
+{yylval.sym=(char)yytext[0];return EXP;}
 	YY_BREAK
 case 3:
-/* rule 3 can match eol */
 YY_RULE_SETUP
 #line 7 "6.l"
-{return 0;}
+{return yytext[0];}
 	YY_BREAK
 case 4:
+/* rule 4 can match eol */
 YY_RULE_SETUP
 #line 8 "6.l"
-{return yytext[0];}
+{return 0;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
