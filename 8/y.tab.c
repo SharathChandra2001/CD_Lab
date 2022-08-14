@@ -70,19 +70,18 @@
 
     #include<stdio.h>
     #include<stdlib.h>
-    void quadruple();
+    char addtotable(char,char,char);
     void assembly();
-	char addToTable(char ,char, char); 
     int ind=0;
     char temp='A';
     struct incod
     {
+        char opr;
         char opd1;
         char opd2;
-        char opr;
     }code[20];
 
-#line 86 "y.tab.c"
+#line 85 "y.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -131,22 +130,22 @@ extern int yydebug;
   enum yytokentype
   {
     NUM = 258,
-    LET = 259
+    EXP = 259
   };
 #endif
 /* Tokens.  */
 #define NUM 258
-#define LET 259
+#define EXP 259
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 17 "8.y"
+#line 16 "8.y"
 
     char sym;
 
-#line 150 "y.tab.c"
+#line 149 "y.tab.c"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -493,7 +492,7 @@ static const yytype_int8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-      11,    12,     7,     6,     2,     5,     2,     8,     2,     2,
+      11,    12,     7,     5,     2,     6,     2,     8,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,    10,
        2,     9,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -521,8 +520,8 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    25,    25,    26,    28,    29,    30,    31,    32,    33,
-      34
+       0,    24,    24,    25,    27,    28,    29,    30,    31,    32,
+      33
 };
 #endif
 
@@ -531,8 +530,8 @@ static const yytype_int8 yyrline[] =
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-  "$end", "error", "$undefined", "NUM", "LET", "'-'", "'+'", "'*'", "'/'",
-  "'='", "';'", "'('", "')'", "$accept", "S", "expr", YY_NULLPTR
+  "$end", "error", "$undefined", "NUM", "EXP", "'+'", "'-'", "'*'", "'/'",
+  "'='", "';'", "'('", "')'", "$accept", "S", "E", YY_NULLPTR
 };
 #endif
 
@@ -541,7 +540,7 @@ static const char *const yytname[] =
    (internal) symbol number NUM (which must be that of a token).  */
 static const yytype_int16 yytoknum[] =
 {
-       0,   256,   257,   258,   259,    45,    43,    42,    47,    61,
+       0,   256,   257,   258,   259,    43,    45,    42,    47,    61,
       59,    40,    41
 };
 # endif
@@ -561,8 +560,8 @@ static const yytype_int16 yytoknum[] =
 static const yytype_int8 yypact[] =
 {
        1,    -7,     2,    10,     6,    19,    10,    -7,    11,    -7,
-      10,    10,    10,    10,    -7,    25,    -7,    -6,    -6,    -6,
-      -6,    -7
+      10,    10,    10,    10,    -7,    25,    -7,    -6,    -6,    -7,
+      -7,    -7
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -570,8 +569,8 @@ static const yytype_int8 yypact[] =
      means the default is an error.  */
 static const yytype_int8 yydefact[] =
 {
-       0,     9,    10,     0,     0,     0,     0,    10,     0,     1,
-       0,     0,     0,     0,     3,     0,     8,     5,     4,     6,
+       0,    10,     9,     0,     0,     0,     0,     9,     0,     1,
+       0,     0,     0,     0,     3,     0,     8,     4,     5,     6,
        7,     2
 };
 
@@ -1322,55 +1321,55 @@ yyreduce:
   switch (yyn)
     {
   case 2:
-#line 25 "8.y"
-                    {addToTable((char)(yyvsp[-3].sym),(char)(yyvsp[-1].sym),'=');}
-#line 1328 "y.tab.c"
+#line 24 "8.y"
+                {addtotable((char)(yyvsp[-3].sym),(char)(yyvsp[-1].sym),'=');}
+#line 1327 "y.tab.c"
     break;
 
   case 4:
-#line 28 "8.y"
-                    {(yyval.sym) = addToTable((char)(yyvsp[-2].sym),(char)(yyvsp[0].sym),'+');}
-#line 1334 "y.tab.c"
+#line 27 "8.y"
+            {(yyval.sym)=addtotable((char)(yyvsp[-2].sym),(char)(yyvsp[0].sym),'+');}
+#line 1333 "y.tab.c"
     break;
 
   case 5:
-#line 29 "8.y"
-                  {(yyval.sym) = addToTable((char)(yyvsp[-2].sym),(char)(yyvsp[0].sym),'-');}
-#line 1340 "y.tab.c"
+#line 28 "8.y"
+            {(yyval.sym)=addtotable((char)(yyvsp[-2].sym),(char)(yyvsp[0].sym),'-');}
+#line 1339 "y.tab.c"
     break;
 
   case 6:
-#line 30 "8.y"
-                  {(yyval.sym) = addToTable((char)(yyvsp[-2].sym),(char)(yyvsp[0].sym),'*');}
-#line 1346 "y.tab.c"
+#line 29 "8.y"
+            {(yyval.sym)=addtotable((char)(yyvsp[-2].sym),(char)(yyvsp[0].sym),'*');}
+#line 1345 "y.tab.c"
     break;
 
   case 7:
-#line 31 "8.y"
-                  {(yyval.sym) = addToTable((char)(yyvsp[-2].sym),(char)(yyvsp[0].sym),'/');}
-#line 1352 "y.tab.c"
+#line 30 "8.y"
+            {(yyval.sym)=addtotable((char)(yyvsp[-2].sym),(char)(yyvsp[0].sym),'/');}
+#line 1351 "y.tab.c"
     break;
 
   case 8:
-#line 32 "8.y"
-                  {(yyval.sym) = (char) (yyvsp[-1].sym);}
-#line 1358 "y.tab.c"
+#line 31 "8.y"
+            {(yyval.sym)=(char)(yyvsp[-1].sym);}
+#line 1357 "y.tab.c"
     break;
 
   case 9:
-#line 33 "8.y"
-        {(yyval.sym) = (char) (yyvsp[0].sym);}
-#line 1364 "y.tab.c"
+#line 32 "8.y"
+            {(yyval.sym)=(char)(yyvsp[0].sym);}
+#line 1363 "y.tab.c"
     break;
 
   case 10:
-#line 34 "8.y"
-        {(yyval.sym) = (char) (yyvsp[0].sym);}
-#line 1370 "y.tab.c"
+#line 33 "8.y"
+            {(yyval.sym)=(char)(yyvsp[0].sym);}
+#line 1369 "y.tab.c"
     break;
 
 
-#line 1374 "y.tab.c"
+#line 1373 "y.tab.c"
 
       default: break;
     }
@@ -1602,81 +1601,50 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 36 "8.y"
+#line 35 "8.y"
 
-char addToTable(char opd1, char opd2, char opr)
+char addtotable(char opd1,char opd2,char opr)
 {
-    code[ind].opd1 = opd1;
-    code[ind].opd2 = opd2;
-    code[ind].opr = opr;
+    code[ind].opd1=opd1;
+    code[ind].opd2=opd2;
+    code[ind].opr=opr;
     ind++;
     temp++;
     return temp;
 }
-void quadruple()
-{
-    printf("\t\t\t Quadruple representation\n");
-    temp++;
-    for(int i=0;i<ind;i++)
-    {
-        printf("\t%c",code[i].opr);
-        if(isalnum(code[i].opd1))
-        {
-            printf("\t%c",code[i].opd1);
-        }
-        else
-            printf("\t%c",temp);
-        if(isalnum(code[i].opd2))
-        {
-            printf("\t%c",code[i].opd2);
-        }
-        else
-            printf("\t%c",temp);    
-        printf("\t%c\n",temp);
-        temp++;
-    }
-}
 void assembly()
 {
-    printf("\t\t\t Assembly Code\n");
+    printf("\tAssembly code\n");
     temp++;
     for(int i=0;i<ind;i++)
     {
         char a,b,c;
-        if(isalnum(code[i].opd1))
+        a=code[i].opd1;
+        b=code[i].opd2;
+        c=code[i].opr;
+        printf("MOV R1, %c\n",a);
+        printf("MOV R2, %c\n",b);
+        switch(c)
         {
-            a=code[i].opd1;
-        }
-        else
-            a=temp;
-        if(isalnum(code[i].opd2))
-        {
-            b=code[i].opd2;
-        }
-        else
-            b=temp;    
-        c=temp;
-        printf("MOVE R1, %c\n",a);
-        printf("MOVE R2, %c\n",b);
-        switch(code[i].opr)
-        {
-            case '+': 
-                printf("ADD R1, R2\nMOV %c, R1\n",temp);
-            break;
+            case '+':
+                printf("ADD %c, R1, R2\n",temp);
+                break;
             case '-':
-                printf("SUB R1, R2\nMOV %c, R1\n",temp);
-            break;
+                printf("SUB %c, R1, R2\n",temp);
+                break;
             case '*':
-                printf("MUL R1, R2\nMOV %c, R1\n",temp);
-            break;
+                printf("MUL %c, R1, R2\n",temp);
+                break;
             case '/':
-                printf("DIV R1, R2\nMOV %c, R1\n",temp);
-            break;
+                printf("DIV %c, R1, R2\n",temp);
+                break;
             case '=':
-                printf("MOV R1, R2\n");
-            break;
+                printf("MOV R1,R2\n");
+                break;
+            default:
+                printf("Invalid Expression\n");
+                exit(0);
         }
-        
         temp++;
     }
 }
@@ -1684,11 +1652,12 @@ int main()
 {
     printf("Enter the expression:\n");
     yyparse();
-    temp = 'A';
+    temp='A';
     assembly();
+    return 0;
 }
 int yyerror()
 {
-    printf("Invalid\n");
+    printf("Invalid expression\n");
     exit(0);
 }

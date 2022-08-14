@@ -50,18 +50,18 @@ extern int yydebug;
   enum yytokentype
   {
     NUM = 258,
-    LET = 259
+    EXP = 259
   };
 #endif
 /* Tokens.  */
 #define NUM 258
-#define LET 259
+#define EXP 259
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 17 "8.y"
+#line 16 "8.y"
 
     char sym;
 
